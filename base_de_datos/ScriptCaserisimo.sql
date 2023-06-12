@@ -1,14 +1,13 @@
 create table camameros
 (
-    idcamarero        INTEGER primary key,
-    nombrecamarero    TEXT,
-    apellidoscamarero TEXT,
-    sueldo            FLOAT
+    idcamarero INTEGER primary key AUTOINCREMENT,
+    nombre     TEXT,
 )
 
 create table mesas
 (
-    numeromesa INTEGER primary key
+    idmesa     INTEGER primary key AUTOINCREMENT,
+    numeromesa INTEGER
 )
 
 create table servicios
@@ -17,23 +16,23 @@ create table servicios
     fecha      DATE,
     hora       TIME,
     idcamarero INTEGER,
-    numeromesa INTEGER,
+    idmesa     INTEGER,
     foreign key (idcamarero) references camareros (idcamarero),
-    foreign key (numeromesa) references mesas (numeromesa)
+    foreign key (idmesa) references mesas (idmesa)
 )
 
 create table categorias
 (
-    idcategoria     INTEGER primary key AUTOINCREMENT,
-    nombrecategoria TEXT
+    idcategoria INTEGER primary key AUTOINCREMENT,
+    nombre      TEXT
 )
 
 create table productos
 (
-    idproducto     INTEGER primary key AUTOINCREMENT,
-    nombreproducto TEXT,
-    precio         FLOAT,
-    idcategoria    INTEGER,
+    idproducto  INTEGER primary key AUTOINCREMENT,
+    nombre      TEXT,
+    precio      FLOAT,
+    idcategoria INTEGER,
     foreign key (idcategoria) references categorias (idcategoria)
 )
 
