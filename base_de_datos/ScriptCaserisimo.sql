@@ -1,47 +1,47 @@
 create table camameros
 (
-    idcamarero INTEGER primary key AUTOINCREMENT,
+    id_camarero INTEGER primary key AUTOINCREMENT,
     nombre     TEXT,
 )
 
 create table mesas
 (
-    idmesa     INTEGER primary key AUTOINCREMENT,
-    numeromesa INTEGER
+    id_mesa     INTEGER primary key AUTOINCREMENT,
+    numero_mesa INTEGER
 )
 
 create table servicios
 (
-    idservicio INTEGER primary key AUTOINCREMENT,
+    id_servicio INTEGER primary key AUTOINCREMENT,
     fecha      DATE,
     hora       TIME,
-    idcamarero INTEGER,
-    idmesa     INTEGER,
-    foreign key (idcamarero) references camareros (idcamarero),
-    foreign key (idmesa) references mesas (idmesa)
+    id_camarero INTEGER,
+    id_mesa     INTEGER,
+    foreign key (id_camarero) references camareros (id_camarero),
+    foreign key (id_mesa) references mesas (id_mesa)
 )
 
 create table categorias
 (
-    idcategoria INTEGER primary key AUTOINCREMENT,
+    id_categoria INTEGER primary key AUTOINCREMENT,
     nombre      TEXT
 )
 
 create table productos
 (
-    idproducto  INTEGER primary key AUTOINCREMENT,
+    id_producto  INTEGER primary key AUTOINCREMENT,
     nombre      TEXT,
     precio      FLOAT,
-    idcategoria INTEGER,
-    foreign key (idcategoria) references categorias (idcategoria)
+    id_categoria INTEGER,
+    foreign key (id_categoria) references categorias (id_categoria)
 )
 
-create table consta
+create table servicios_productos
 (
-    idservicio INTEGER,
-    idproducto INTEGER,
+    id_servicios_productos INTEGER primary key AUTOINCREMENT,
+    id_servicio INTEGER,
+    id_producto INTEGER,
     cantidad   INTEGER,
-    primary key (idservicio, idproducto),
-    foreign key (idservicio) references servicios (idservicio),
-    foreign key (idproducto) references productos (idproducto)
+    foreign key (id_servicio) references servicios (id_servicio),
+    foreign key (id_producto) references productos (id_producto)
 );
