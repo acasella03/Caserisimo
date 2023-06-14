@@ -13,8 +13,8 @@ create table mesas
 create table servicios
 (
     id_servicio INTEGER primary key AUTOINCREMENT,
-    fecha       DATE,
-    hora        TIME,
+    inicio      TEXT,
+    fin         TEXT,
     id_camarero INTEGER,
     id_mesa     INTEGER,
     foreign key (id_camarero) references camareros (id_camarero),
