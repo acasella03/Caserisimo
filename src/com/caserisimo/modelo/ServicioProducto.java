@@ -1,4 +1,4 @@
-package caserisimo.modelo;
+package com.caserisimo.modelo;
 
 public class ServicioProducto {
     private int idServicioProducto;
