@@ -41,7 +41,6 @@ public abstract class Dao<E> implements IDao<E> {
             ResultSet resultSet = buscarEntidad.executeQuery();
             if (resultSet.next()) {
                 entidad = crearEntidadDelResultSet(resultSet);
-                buscarYAgregar(entidad, id);
             }
         } catch (SQLException e) {
             System.err.println(e);
@@ -50,8 +49,6 @@ public abstract class Dao<E> implements IDao<E> {
         }
         return entidad;
     }
-
-    protected abstract void buscarYAgregar(E entidad, int id) throws SQLException;
 
     @Override
     public void create(E object) {
