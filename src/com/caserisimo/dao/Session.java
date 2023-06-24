@@ -1,14 +1,15 @@
 package com.caserisimo.dao;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Session {
     private static Session instance;
-    private Connection connection;
 
     private Session() {
     }
+
     public static Session getInstance() {
         if (instance == null) {
             synchronized (Session.class) {
@@ -21,21 +22,18 @@ public class Session {
     }
 
     public Connection getConnection() {
-        if (connection == null) {
-            try {
-                String url = "jdbc:sqlite:identifier.sqlite";
-                connection = DriverManager.getConnection(url);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+        try {
+            return DriverManager.getConnection("jdbc:sqlite:identifier.sqlite");
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        return connection;
+        return null;
     }
 
-    public void closeConnection() {
-        if (connection != null) {
+    public void closeConnection(Connection sessionConnection) {
+        if (sessionConnection != null) {
             try {
-                connection.close();
+                sessionConnection.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }

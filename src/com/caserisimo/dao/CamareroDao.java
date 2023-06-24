@@ -2,6 +2,7 @@ package com.caserisimo.dao;
 
 import com.caserisimo.modelo.Camarero;
 
+import java.lang.reflect.Field;
 import java.sql.*;
 
 public class CamareroDao extends Dao<Camarero> {
@@ -14,8 +15,8 @@ public class CamareroDao extends Dao<Camarero> {
 
     @Override
     public void createTable() {
+        Connection conexion = Session.getInstance().getConnection();
         try{
-            Connection conexion = Session.getInstance().getConnection();
             Statement sentencia = conexion.createStatement();
             String query = "CREATE TABLE IF NOT EXISTS " + CAMAREROS + " (" +
                     "id_camarero INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -26,7 +27,7 @@ public class CamareroDao extends Dao<Camarero> {
         } catch (SQLException e) {
             System.err.println(e);
         }finally {
-            Session.getInstance().closeConnection();
+            Session.getInstance().closeConnection(conexion);
         }
     }
 
@@ -38,31 +39,41 @@ public class CamareroDao extends Dao<Camarero> {
     }
 
     @Override
-    protected void setPreparedStatementParameters(PreparedStatement preparedStatement, Camarero object) {
-        try {
-            preparedStatement.setInt(1, findById(camarero.getIdCamarero()).getIdCamarero());
-        } catch (SQLException e) {
-            System.err.println(e);
-        }
-
+    protected String generateFindByIdQuery() {
+        return "SELECT * FROM " + CAMAREROS + " WHERE id_camarero = ?";
     }
 
     @Override
-    protected String generarInsertQuery(Camarero object) throws SQLException {
-        String query = "INSERT INTO " + CAMAREROS + " nombre VALUES ?";
+    protected void setPreparedStatementParameters(PreparedStatement preparedStatement, Camarero object) {
+        try {
+            Class<?> objectClass = object.getClass();
+            Field[] fields = objectClass.getDeclaredFields();
+            for (int i = 0; i < fields.length; i++) {
+                Field field = fields[i];
+                field.setAccessible(true);
+                Object value = field.get(object);
+                preparedStatement.setObject(i, value);
+            }
+        } catch (IllegalAccessException | SQLException e) {
+            System.err.println(e);
+        }
+    }
+
+    @Override
+    protected String generarInsertQuery(Camarero object) {
+        String query = "INSERT INTO " + CAMAREROS + " (nombre) VALUES (?)";
         return query;
     }
 
     @Override
     protected String generarUpdateQuery(Camarero object) throws SQLException {
-        String query = "UPDATE " + CAMAREROS + " SET nombre = ? WHERE id = ?";
+        String query = "UPDATE " + CAMAREROS + " SET nombre = ? WHERE id_camarero = ?";
         return query;
     }
 
     @Override
-    protected String generarDeleteQuery(Camarero object) throws SQLException {
-        String query = "DELETE FROM " + CAMAREROS + " WHERE id = ?";
-        return query;
+    protected String generarDeleteQuery() throws SQLException {
+        return "DELETE FROM " + CAMAREROS + " WHERE id_camarero = ?";
     }
 
     @Override
