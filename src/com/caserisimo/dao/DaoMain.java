@@ -3,6 +3,7 @@ package com.caserisimo.dao;
 import com.caserisimo.modelo.Camarero;
 import com.caserisimo.modelo.Categoria;
 import com.caserisimo.modelo.Mesa;
+import com.caserisimo.modelo.Producto;
 
 import java.util.ArrayList;
 
@@ -50,6 +51,24 @@ public class DaoMain {
         //mesaDao.delete(mesaEncontrada);
         //System.out.println(mesaDao.count());
 
+        //ProductoDao productoDao=new ProductoDao();
+        //Producto producto=new Producto();
+        //productoDao.createTable();
+        //producto.setNombre("Dorada Frita con Patatas Fritas");
+        //producto.setPrecio(15.8f);
+        //producto.setIdCategoria(2);
+        //productoDao.create(producto);
+        //System.out.println(productoDao.findById(4).getNombre());
+        //Producto productoEncontrado=productoDao.findById(5);
+        //System.out.println(productoEncontrado.getNombre());
+        //productoEncontrado.setNombre("dorada y patatas");
+        //productoEncontrado.setPrecio(15.00f);
+        //productoDao.update(productoEncontrado);
+        //System.out.println(productoEncontrado.getNombre());
+        //System.out.println(productoEncontrado.getPrecio());
+        //System.out.println(productoEncontrado.getIdCategoria());
+        //productoDao.delete(productoEncontrado);
+        //System.out.println(productoDao.count());
 
     }
 }
