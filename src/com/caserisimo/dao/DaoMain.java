@@ -34,5 +34,7 @@ public class DaoMain {
         //System.out.println(categoriaEncontrada.getNombre());
         //categoriaDao.delete(categoriaEncontrada);
         //System.out.println(categoriaDao.count());
+
+
     }
 }
