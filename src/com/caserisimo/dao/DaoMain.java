@@ -19,5 +19,7 @@ public class DaoMain {
         //System.out.println(camareroEncontrado.getNombre());
         //camareroDao.delete(camareroEncontrado);
         //System.out.println(camareroDao.count());
+
+
     }
 }

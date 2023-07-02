@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public abstract class Dao<E> implements IDao<E> {
     private final String nombreTabla;
 
-    protected Dao(String nombreTabla) {
+    public Dao(String nombreTabla) {
         this.nombreTabla = nombreTabla;
     }
 
