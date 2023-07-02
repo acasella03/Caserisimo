@@ -2,6 +2,7 @@ package com.caserisimo.dao;
 
 import com.caserisimo.modelo.Camarero;
 import com.caserisimo.modelo.Categoria;
+import com.caserisimo.modelo.Mesa;
 
 import java.util.ArrayList;
 
@@ -34,6 +35,20 @@ public class DaoMain {
         //System.out.println(categoriaEncontrada.getNombre());
         //categoriaDao.delete(categoriaEncontrada);
         //System.out.println(categoriaDao.count());
+
+        //MesaDao mesaDao=new MesaDao();
+        //Mesa mesa=new Mesa();
+        //mesaDao.createTable();
+        //mesa.setNombre("4");
+        //mesaDao.create(mesa);
+        //System.out.println(mesaDao.findById(4).getNombre());
+        //Mesa mesaEncontrada=mesaDao.findById(4);
+        //System.out.println(mesaEncontrada.getNombre());
+        //mesaEncontrada.setNombre("5");
+        //mesaDao.update(mesaEncontrada);
+        //System.out.println(mesaEncontrada.getNombre());
+        //mesaDao.delete(mesaEncontrada);
+        //System.out.println(mesaDao.count());
 
 
     }
