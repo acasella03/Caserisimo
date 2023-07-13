@@ -70,8 +70,8 @@ public class DaoMain {
         //productoDao.delete(productoEncontrado);
         //System.out.println(productoDao.count());
 
-        ServicioDao servicioDao=new ServicioDao();
-        Servicio servicio=new Servicio();
+        //ServicioDao servicioDao=new ServicioDao();
+        //Servicio servicio=new Servicio();
         //servicioDao.createTable();
         /*
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
@@ -114,5 +114,17 @@ public class DaoMain {
         //servicioDao.delete(servicioEncontrado);
         //System.out.println(servicioDao.count());
 
+        //ServicioProductoDao servicioProductoDao=new ServicioProductoDao();
+        //ServicioProducto servicioProducto=new ServicioProducto();
+        //servicioProductoDao.createTable();
+        //servicioProducto.setIdProducto(1);
+        //servicioProducto.setIdServicio(1);
+        //servicioProducto.setCantidad(2);
+        //servicioProductoDao.create(servicioProducto);
+        //ServicioProducto encontrado= servicioProductoDao.findById(1);
+        //encontrado.setCantidad(3);
+        //servicioProductoDao.update(encontrado);
+        //servicioProductoDao.delete(encontrado);
+        //System.out.println(servicioProductoDao.count());
     }
 }
