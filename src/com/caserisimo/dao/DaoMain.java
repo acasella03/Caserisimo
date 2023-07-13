@@ -1,11 +1,11 @@
 package com.caserisimo.dao;
 
-import com.caserisimo.modelo.Camarero;
-import com.caserisimo.modelo.Categoria;
-import com.caserisimo.modelo.Mesa;
-import com.caserisimo.modelo.Producto;
+import com.caserisimo.modelo.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class DaoMain {
     public static void main(String[] args) {
@@ -69,6 +69,50 @@ public class DaoMain {
         //System.out.println(productoEncontrado.getIdCategoria());
         //productoDao.delete(productoEncontrado);
         //System.out.println(productoDao.count());
+
+        ServicioDao servicioDao=new ServicioDao();
+        Servicio servicio=new Servicio();
+        //servicioDao.createTable();
+        /*
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        Date fechaInicio = null;
+        Date fechaFin = null;
+        try {
+            fechaInicio = formatter.parse("13-07-2023 19:00");
+            fechaFin = formatter.parse("13-07-2023 21:00");
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        servicio.setInicio(String.valueOf(fechaInicio));
+        servicio.setFin(String.valueOf(fechaFin));
+        servicio.setIdCamarero(1);
+        servicio.setIdMesa(1);
+        servicioDao.create(servicio);
+        */
+        /*
+        System.out.println(servicioDao.findById(4).getInicio());
+        System.out.println(servicioDao.findById(4).getFin());
+        System.out.println(servicioDao.findById(4).getIdCamarero());
+        System.out.println(servicioDao.findById(4).getIdMesa());
+         */
+        //Servicio servicioEncontrado=servicioDao.findById(4);
+        /*
+        System.out.println(servicioEncontrado.getInicio());
+        System.out.println(servicioEncontrado.getFin());
+        System.out.println(servicioEncontrado.getIdCamarero());
+        System.out.println(servicioEncontrado.getIdMesa());
+        servicioEncontrado.setInicio("13-07-2023 13:00");
+        servicioEncontrado.setFin("13-07-2023 15:00");
+        servicioEncontrado.setIdCamarero(3);
+        servicioEncontrado.setIdMesa(3);
+        servicioDao.update(servicioEncontrado);
+        System.out.println(servicioEncontrado.getInicio());
+        System.out.println(servicioEncontrado.getFin());
+        System.out.println(servicioEncontrado.getIdCamarero());
+        System.out.println(servicioEncontrado.getIdMesa());
+         */
+        //servicioDao.delete(servicioEncontrado);
+        //System.out.println(servicioDao.count());
 
     }
 }

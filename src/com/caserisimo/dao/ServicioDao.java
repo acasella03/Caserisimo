@@ -19,11 +19,11 @@ public class ServicioDao extends Dao<Servicio> {
             Statement sentencia = conexion.createStatement();
             String query = "CREATE TABLE IF NOT EXISTS " + NOMBRE_TABLA + " (" +
                     "id_servicio INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    "inicio TEXT" +
-                    "fin TEXT" +
-                    "id_camarero INTEGER" +
-                    "id_mesa INTEGER" +
-                    "FOREIGN KEY (id_camarero) REFERENCES camareros (id_camarero)" +
+                    "inicio TEXT," +
+                    "fin TEXT," +
+                    "id_camarero INTEGER," +
+                    "id_mesa INTEGER," +
+                    "FOREIGN KEY (id_camarero) REFERENCES camareros (id_camarero)," +
                     "FOREIGN KEY (id_mesa) REFERENCES mesas (id_mesa)" +
                     ")";
             sentencia.executeUpdate(query);
@@ -44,8 +44,8 @@ public class ServicioDao extends Dao<Servicio> {
             ResultSet resultSet = sentencia.executeQuery("SELECT * FROM " + NOMBRE_TABLA);
             while (resultSet.next()) {
                 int id = resultSet.getInt("id_servicio");
-                Date inicio = resultSet.getDate("inicio");
-                Date fin = resultSet.getDate("fin");
+                String inicio = resultSet.getString("inicio");
+                String fin = resultSet.getString("fin");
                 int id_camarero = resultSet.getInt("id_camarero");
                 int id_mesa = resultSet.getInt("id_mesa");
                 Servicio servicio = new Servicio(id, inicio, fin, id_camarero, id_mesa);
@@ -68,8 +68,8 @@ public class ServicioDao extends Dao<Servicio> {
             sentencia.setInt(1, id);
             ResultSet resultSet = sentencia.executeQuery();
             if (resultSet.next()) {
-                Date inicio = resultSet.getDate("inicio");
-                Date fin = resultSet.getDate("fin");
+                String inicio = resultSet.getString("inicio");
+                String fin = resultSet.getString("fin");
                 int id_camarero = resultSet.getInt("id_camarero");
                 int id_mesa = resultSet.getInt("id_mesa");
                 servicio = new Servicio(id, inicio, fin, id_camarero, id_mesa);
@@ -87,8 +87,8 @@ public class ServicioDao extends Dao<Servicio> {
         Connection conexion = Session.getInstance().getConnection();
         try {
             PreparedStatement sentencia = conexion.prepareStatement("INSERT INTO " + NOMBRE_TABLA + " (inicio, fin, id_camarero, id_mesa) VALUES (?, ?, ?, ?)");
-            sentencia.setDate(1, (Date) object.getInicio());
-            sentencia.setDate(2, (Date) object.getFin());
+            sentencia.setString(1, object.getInicio());
+            sentencia.setString(2, object.getFin());
             sentencia.setInt(3, object.getIdCamarero());
             sentencia.setInt(4, object.getIdMesa());
             sentencia.executeUpdate();
@@ -104,11 +104,12 @@ public class ServicioDao extends Dao<Servicio> {
     public void update(Servicio object) {
         Connection conexion = Session.getInstance().getConnection();
         try {
-            PreparedStatement sentencia = conexion.prepareStatement("UPDATE " + NOMBRE_TABLA + " SET inicio = ?, fin = ?, id_camarero = ? id_mesa = ? WHERE id_servicio = ?");
-            sentencia.setDate(1, (Date) object.getInicio());
-            sentencia.setDate(2, (Date) object.getFin());
+            PreparedStatement sentencia = conexion.prepareStatement("UPDATE " + NOMBRE_TABLA + " SET inicio = ?, fin = ?, id_camarero = ?, id_mesa = ? WHERE id_servicio = ?");
+            sentencia.setString(1, object.getInicio());
+            sentencia.setString(2, object.getFin());
             sentencia.setInt(3, object.getIdCamarero());
             sentencia.setInt(4, object.getIdMesa());
+            sentencia.setInt(5, object.getIdServicio());
             int respuesta = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea modificar los datos del servicio?");
             if (respuesta == JOptionPane.YES_OPTION) {
                 sentencia.executeUpdate();

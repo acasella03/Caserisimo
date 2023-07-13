@@ -1,18 +1,16 @@
 package com.caserisimo.modelo;
 
-import java.util.Date;
-
 public class Servicio {
     private int idServicio;
-    private Date inicio;
-    private Date fin;
+    private String inicio;
+    private String fin;
     private int idCamarero;
     private int idMesa;
 
     public Servicio() {
     }
 
-    public Servicio(int idServicio, Date inicio, Date fin, int idCamarero, int idMesa) {
+    public Servicio(int idServicio, String inicio, String fin, int idCamarero, int idMesa) {
         this.idServicio = idServicio;
         this.inicio = inicio;
         this.fin = fin;
@@ -28,19 +26,19 @@ public class Servicio {
         this.idServicio = idServicio;
     }
 
-    public Date getInicio() {
+    public String getInicio() {
         return inicio;
     }
 
-    public void setInicio(Date inicio) {
+    public void setInicio(String inicio) {
         this.inicio = inicio;
     }
 
-    public Date getFin() {
+    public String getFin() {
         return fin;
     }
 
-    public void setFin(Date fin) {
+    public void setFin(String fin) {
         this.fin = fin;
     }
 
